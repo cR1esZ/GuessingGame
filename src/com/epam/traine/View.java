@@ -14,8 +14,6 @@ public class View {
     public static final String RANGE_INFO = "Input value from this range. Range = ";
 
 
-
-
     public void printMessage(String message){
         System.out.println(message);
     }

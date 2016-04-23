@@ -12,15 +12,6 @@ public class Model {
     private int upperBound;
     private int numberOfAttempts;
 
-    // The Program logic
-
-
-    public Model(int randomNumber, int lowerBound, int upperBound, int numberOfAttempts) {
-        this.randomNumber = randomNumber;
-        this.lowerBound = lowerBound;
-        this.upperBound = upperBound;
-        this.numberOfAttempts = numberOfAttempts;
-    }
 
     public Model(){
 
@@ -38,15 +29,6 @@ public class Model {
     private int rand(int min,int max){
         return min + (int)(Math.random() * ((max - min) + 1));
     }
-
-
-
-
-
-
-
-
-
 
     public int getRandomNumber() {
         return randomNumber;
