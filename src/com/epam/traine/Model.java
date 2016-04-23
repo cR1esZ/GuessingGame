@@ -1,8 +1,10 @@
 package com.epam.traine;
 
 /**
- * Created by User on 17.03.2016.
+ * @author andreyholovan
+ * @version 1.0
  */
+
 public class Model {
 
     private static final int RAND_MAX = Integer.MAX_VALUE;
@@ -12,7 +14,9 @@ public class Model {
     private int upperBound;
     private int numberOfAttempts;
 
-
+    /**
+     * @see Model#Model()
+     */
     public Model(){
 
         this.randomNumber = rand(0,100);

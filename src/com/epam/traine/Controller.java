@@ -3,10 +3,11 @@ package com.epam.traine;
 import java.util.Scanner;
 
 /**
- * Created by User on 17.03.2016.
+ * @author andreyholovan
+ * @version 1.0
  */
-public class Controller {
 
+public class Controller {
 
     private Model model;
     private View view;
@@ -16,6 +17,8 @@ public class Controller {
         this.view = view;
     }
 
+
+
     // The Work method
     public void processUser() {
         view.printMessage(view.HELLO_PLAYER);
@@ -24,7 +27,6 @@ public class Controller {
         int playerGuess = model.getLowerBound() - 1;
 
         while (playerGuess != model.getRandomNumber()) {
-
             playerGuess = inputIntValueWithScanner(scanner);
             compareGuessAndRandomNumber(playerGuess);
             model.addOneAttempt();
@@ -68,8 +70,4 @@ public class Controller {
             view.printMessageAndInt(view.RIGHT_GUESS,model.getNumberOfAttempts());
         }
     }
-
-
-
-
 }

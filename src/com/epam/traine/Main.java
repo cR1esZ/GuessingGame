@@ -1,5 +1,10 @@
 package com.epam.traine;
 
+/**
+ * @author andreyholovan
+ * @version 1.0
+ */
+
 public class Main {
 
     public static void main(String[] args) {

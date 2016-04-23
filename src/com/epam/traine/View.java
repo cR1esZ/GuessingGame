@@ -1,8 +1,10 @@
 package com.epam.traine;
 
 /**
- * Created by User on 17.03.2016.
+ * @author andreyholovan
+ * @version 1.0
  */
+
 public class View {
     // Text's constants
     public static final String HELLO_PLAYER = "Hey man, your task guess number from range(0-100). The force will be with you";
