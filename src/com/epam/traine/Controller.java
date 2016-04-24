@@ -97,14 +97,14 @@ public class Controller {
 
     /**
      *  Utility method to check for entry into the range
-     * @param playerGuess value from user input
+     * @param playerGuess value from player input
      */
     private boolean isGuessNumberOfRange(int playerGuess) {
         return playerGuess >= model.getLowerBound() && playerGuess <= model.getUpperBound();
     }
     /**
-     *  Utility method to test comparing the number of user and computer
-     * @param playerGuess value from user input
+     *  Utility method to test comparing the number of player and computer
+     * @param playerGuess value from player input
      */
     private void compareGuessAndRandomNumber(int playerGuess) {
 
@@ -130,7 +130,7 @@ public class Controller {
         int min = scanner.nextInt();
         int max = scanner.nextInt();
 
-        if (min > max){
+        if (min > max || min == max){
             view.printMessage(view.COMPARE_MIN_AND_MAX);
             return createGameWithRange(scanner);
         }

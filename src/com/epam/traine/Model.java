@@ -1,5 +1,8 @@
 package com.epam.traine;
 
+
+import java.util.ArrayList;
+
 /**
  * @author andreyholovan
  * @version 1.0
@@ -88,7 +91,6 @@ public class Model {
     public static int getAttemptsZero() {
         return ATTEMPTS_ZERO;
     }
-
 
     /**
      * This method add one attempt
