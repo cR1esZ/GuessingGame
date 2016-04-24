@@ -28,7 +28,7 @@ public class Model {
 
 
     public int rand() {
-        return (int) (Math.random() * RAND_MAX);
+        return rand(RAND_MIN,RAND_MAX);
     }
 
     public int rand(int min, int max) {
