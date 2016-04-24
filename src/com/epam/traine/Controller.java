@@ -30,7 +30,6 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
 
         actionUser(model,scanner);
-
         menuForChoiceGame(scanner);
 
     }
@@ -67,7 +66,6 @@ public class Controller {
                 break;
             case 2: actionUser(createGameWithoutParameters(),scanner);
                 break;
-            default:
         }
     }
 
