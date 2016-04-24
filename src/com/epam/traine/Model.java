@@ -13,6 +13,7 @@ public class Model {
     private static final int RAND_MAX = Integer.MAX_VALUE;
     private static final int RAND_MIN = 0;
     private static final int ATTEMPTS_ZERO = 0;
+    private static final int DEFAULT_UPPER_BOUND = 100;
 
     private int randomNumber;
     private int lowerBound;
@@ -20,25 +21,29 @@ public class Model {
     private int numberOfAttempts;
 
     /**
+     * Constructor with defaults data
+     *
      * @see Model#Model()
      */
     public Model() {
-        this.randomNumber = rand(0, 100);
-        this.lowerBound = 0;
-        this.upperBound = 100;
-        this.numberOfAttempts = 0;
+        this.randomNumber = rand(RAND_MIN, DEFAULT_UPPER_BOUND);
+        this.lowerBound = RAND_MIN;
+        this.upperBound = DEFAULT_UPPER_BOUND;
+        this.numberOfAttempts = ATTEMPTS_ZERO;
     }
 
     /**
      * This method return random int value in a range of (0...Integer.MAX_VALUE)
+     *
      * @return random value
      */
     public int rand() {
-        return rand(RAND_MIN,RAND_MAX);
+        return rand(RAND_MIN, RAND_MAX);
     }
 
     /**
      * This method return random int value in a range of (min...max)
+     *
      * @param min min lower bound
      * @param max max upper bound
      * @return random value
