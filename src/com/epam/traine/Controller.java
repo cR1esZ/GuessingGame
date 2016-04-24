@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class Controller {
 
+    private static final int MENU_ITEM_ONE = 1;
+    private static final int MENU_ITEM_TWO = 2;
+
+
     private Model model;
     private View view;
 
@@ -54,7 +58,7 @@ public class Controller {
         }
         int result = scanner.nextInt();
 
-        if (result != 1 && result !=2){
+        if (result != MENU_ITEM_ONE && result != MENU_ITEM_TWO){
             view.printMessage(view.WRONG_CHOICE_MENU);
             menuForChoiceGame(scanner);
         }
