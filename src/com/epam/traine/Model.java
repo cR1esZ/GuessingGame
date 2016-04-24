@@ -8,6 +8,7 @@ package com.epam.traine;
 public class Model {
 
     private static final int RAND_MAX = Integer.MAX_VALUE;
+    private static final int RAND_MIN = 0;
 
     private int randomNumber;
     private int lowerBound;
@@ -18,7 +19,6 @@ public class Model {
      * @see Model#Model()
      */
     public Model(){
-
         this.randomNumber = rand(0,100);
         this.lowerBound = 0;
         this.upperBound = 100;
@@ -26,11 +26,11 @@ public class Model {
     }
 
 
-    private  int rand(){
+    public   int rand(){
         return (int)(Math.random() * RAND_MAX);
     }
 
-    private int rand(int min,int max){
+    public int rand(int min,int max){
         return min + (int)(Math.random() * ((max - min) + 1));
     }
 
@@ -71,8 +71,12 @@ public class Model {
     }
 
 
+    public static int getRandMin() {
+        return RAND_MIN;
+    }
+
     public void addOneAttempt(){
-        this.numberOfAttempts++;
+        ++this.numberOfAttempts;
     }
 
     @Override
