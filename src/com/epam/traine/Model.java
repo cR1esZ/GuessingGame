@@ -19,20 +19,20 @@ public class Model {
     /**
      * @see Model#Model()
      */
-    public Model(){
-        this.randomNumber = rand(0,100);
+    public Model() {
+        this.randomNumber = rand(0, 100);
         this.lowerBound = 0;
         this.upperBound = 100;
         this.numberOfAttempts = 0;
     }
 
 
-    public   int rand(){
-        return (int)(Math.random() * RAND_MAX);
+    public int rand() {
+        return (int) (Math.random() * RAND_MAX);
     }
 
-    public int rand(int min,int max){
-        return min + (int)(Math.random() * ((max - min) + 1));
+    public int rand(int min, int max) {
+        return min + (int) (Math.random() * ((max - min) + 1));
     }
 
     public int getRandomNumber() {
@@ -80,7 +80,7 @@ public class Model {
         return ATTEMPTS_ZERO;
     }
 
-    public void addOneAttempt(){
+    public void addOneAttempt() {
         ++this.numberOfAttempts;
     }
 

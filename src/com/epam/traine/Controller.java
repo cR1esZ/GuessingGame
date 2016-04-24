@@ -72,18 +72,18 @@ public class Controller {
     }
 
 
-    public int inputIntValueWithScanner(Scanner sc) {
+    public int inputIntValueWithScanner(Scanner scanner) {
         view.printMessageAndRange(view.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
-        while (!sc.hasNextInt()) {
+        while (!scanner.hasNextInt()) {
             view.printMessage(view.WRONG_INPUT_INT_DATA);
             view.printMessageAndRange(view.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
-            sc.next();
+            scanner.next();
         }
-        int playerGuess = sc.nextInt();
+        int playerGuess = scanner.nextInt();
 
         if (!isGuessNumberOfRange(playerGuess)) {
             view.printMessageAndRange(view.WRONG_INPUT_DATA_IN_RANGE, model.getLowerBound(), model.getUpperBound());
-            return inputIntValueWithScanner(sc);
+            return inputIntValueWithScanner(scanner);
         }
 
         return playerGuess;

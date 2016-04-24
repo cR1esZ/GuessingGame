@@ -1,5 +1,7 @@
 package com.epam.traine;
 
+import java.util.ArrayList;
+
 /**
  * @author andreyholovan
  * @version 1.0
