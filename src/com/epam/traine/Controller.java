@@ -20,9 +20,6 @@ public class Controller {
         this.model = model;
         this.view = view;
     }
-
-
-
     /**
      * Work methods
      */
@@ -46,8 +43,8 @@ public class Controller {
 
         while (playerGuessNumber != model.getRandomNumber()) {
             playerGuessNumber = inputIntValueWithScanner(scanner);
-            compareGuessAndRandomNumber(playerGuessNumber);
             model.addOneAttempt();
+            compareGuessAndRandomNumber(playerGuessNumber);
         }
 
     }
