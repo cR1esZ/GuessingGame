@@ -16,8 +16,8 @@ public class View {
     public static final String RANGE_INFO = "Input value from this range. Range = ";
     public static final String COMPARE_MIN_AND_MAX = "The minimum value must be less than the maximum. Please try again.";
     public static final String GAME_WITH_RANGE = "Please enter the range to which you want to play. Example 50 100" ;
-    public static final String MENU_TEXT_ONE = "Game with range. Enter 1";
-    public static final String MENU_TEXT_TWO = "Game without range. Enter 2";
+    public static final String MENU_TEXT_ONE = "1 - Game with range.";
+    public static final String MENU_TEXT_TWO = "2 - Game without range. (0-Integer.MAX_VALUE)";
     public static final String WRONG_CHOICE_MENU = "Wrong input! Please input 1 or 2";
 
 
