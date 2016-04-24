@@ -26,11 +26,20 @@ public class Model {
         this.numberOfAttempts = 0;
     }
 
-
+    /**
+     * This method return random int value in a range of (0...Integer.MAX_VALUE)
+     * @return random value
+     */
     public int rand() {
         return rand(RAND_MIN,RAND_MAX);
     }
 
+    /**
+     * This method return random int value in a range of (min...max)
+     * @param min min lower bound
+     * @param max max upper bound
+     * @return random value
+     */
     public int rand(int min, int max) {
         return min + (int) (Math.random() * ((max - min) + 1));
     }
@@ -80,6 +89,10 @@ public class Model {
         return ATTEMPTS_ZERO;
     }
 
+
+    /**
+     * This method add one attempt
+     */
     public void addOneAttempt() {
         ++this.numberOfAttempts;
     }

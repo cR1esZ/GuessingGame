@@ -23,7 +23,9 @@ public class Controller {
 
 
 
-    // The Work method
+    /**
+     * Work methods
+     */
     public void processUser() {
         view.printMessage(view.HELLO_PLAYER);
 
@@ -33,7 +35,11 @@ public class Controller {
         menuForChoiceGame(scanner);
 
     }
-
+    /**
+     * This method start the game
+     * @param model which of the game
+     * @param scanner input stream
+     */
     public void actionUser(Model model, Scanner scanner){
 
         int playerGuessNumber = model.getLowerBound() - 1;
@@ -45,7 +51,10 @@ public class Controller {
         }
 
     }
-
+    /**
+     * This method call menu for choice the game
+     * @param scanner input stream
+     */
     public void menuForChoiceGame(Scanner scanner){
 
         view.printMessage(view.MENU_TEXT_ONE);
@@ -69,7 +78,6 @@ public class Controller {
         }
     }
 
-
     public int inputIntValueWithScanner(Scanner scanner) {
         view.printMessageAndRange(view.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
         while (!scanner.hasNextInt()) {
@@ -87,12 +95,18 @@ public class Controller {
         return playerGuess;
     }
 
-
-    public boolean isGuessNumberOfRange(int playerGuess) {
+    /**
+     *  Utility method to check for entry into the range
+     * @param playerGuess value from user input
+     */
+    private boolean isGuessNumberOfRange(int playerGuess) {
         return playerGuess >= model.getLowerBound() && playerGuess <= model.getUpperBound();
     }
-
-    public void compareGuessAndRandomNumber(int playerGuess) {
+    /**
+     *  Utility method to test comparing the number of user and computer
+     * @param playerGuess value from user input
+     */
+    private void compareGuessAndRandomNumber(int playerGuess) {
 
         if (playerGuess < model.getRandomNumber()) {
             view.printMessage(view.GUESS_NUMBER_LOW);
