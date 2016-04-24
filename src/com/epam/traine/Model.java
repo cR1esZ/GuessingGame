@@ -9,6 +9,7 @@ public class Model {
 
     private static final int RAND_MAX = Integer.MAX_VALUE;
     private static final int RAND_MIN = 0;
+    private static final int ATTEMPTS_ZERO = 0;
 
     private int randomNumber;
     private int lowerBound;
@@ -73,6 +74,10 @@ public class Model {
 
     public static int getRandMin() {
         return RAND_MIN;
+    }
+
+    public static int getAttemptsZero() {
+        return ATTEMPTS_ZERO;
     }
 
     public void addOneAttempt(){

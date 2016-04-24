@@ -125,7 +125,7 @@ public class Controller {
         model.setRandomNumber(model.rand(min,max));
         model.setLowerBound(min);
         model.setUpperBound(max);
-        model.setNumberOfAttempts(0);
+        model.setNumberOfAttempts(model.getAttemptsZero());
         return model;
     }
 
@@ -133,7 +133,7 @@ public class Controller {
         model.setRandomNumber(model.rand());
         model.setLowerBound(model.getRandMin());
         model.setUpperBound(model.getRandMax());
-        model.setNumberOfAttempts(0);
+        model.setNumberOfAttempts(model.getAttemptsZero());
         return model;
     }
 
