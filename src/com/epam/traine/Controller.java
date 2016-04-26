@@ -104,7 +104,7 @@ public class Controller {
      *
      * @param playerGuess value from player input
      */
-    private boolean isGuessNumberOfRange(int playerGuess) {
+    public boolean isGuessNumberOfRange(int playerGuess) {
         return playerGuess > model.getLowerBound() && playerGuess < model.getUpperBound();
     }
 
@@ -113,7 +113,7 @@ public class Controller {
      *
      * @param playerGuess value from player input
      */
-    private void compareGuessAndRandomNumber(int playerGuess) {
+    public void compareGuessAndRandomNumber(int playerGuess) {
 
         if (playerGuess < model.getRandomNumber()) {
             view.printMessage(view.GUESS_NUMBER_LOW);
@@ -137,7 +137,7 @@ public class Controller {
         int min = scanner.nextInt();
         int max = scanner.nextInt();
 
-        if (min > max || min == max) {
+        if (!compareLowerBoundAndUpperBound(min,max)) {
             view.printMessage(view.COMPARE_MIN_AND_MAX);
             return createGameWithRange(scanner);
         }
@@ -154,6 +154,11 @@ public class Controller {
         model.setUpperBound(model.getRandMax());
         model.setNumberOfAttempts(model.getAttemptsZero());
         return model;
+    }
+
+
+    public boolean compareLowerBoundAndUpperBound(int min,int max){
+        return min > max || min == max || min + 1 == max;
     }
 
 }
