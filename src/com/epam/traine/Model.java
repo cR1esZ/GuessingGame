@@ -49,7 +49,7 @@ public class Model {
      * @return random value
      */
     public int rand(int min, int max) {
-        return min + (int) (Math.random() * ((max - min) + 1));
+        return (min + 1) + (int) (Math.random() * ((max - min) - 1));
     }
 
     public int getRandomNumber() {

@@ -67,7 +67,7 @@ public class Controller {
             scanner.next();
         }
         int result = scanner.nextInt();
-
+        
         if (result != MENU_ITEM_ONE && result != MENU_ITEM_TWO) {
             view.printMessage(view.WRONG_CHOICE_MENU);
             menuForChoiceGame(scanner);
@@ -105,7 +105,7 @@ public class Controller {
      * @param playerGuess value from player input
      */
     private boolean isGuessNumberOfRange(int playerGuess) {
-        return playerGuess >= model.getLowerBound() && playerGuess <= model.getUpperBound();
+        return playerGuess > model.getLowerBound() && playerGuess < model.getUpperBound();
     }
 
     /**
