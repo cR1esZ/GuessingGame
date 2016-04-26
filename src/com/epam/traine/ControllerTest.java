@@ -20,7 +20,6 @@ public class ControllerTest {
     private View view;
     private Controller controller;
 
-
     @Before
     public void initControllerTest(){
         model = new Model();
