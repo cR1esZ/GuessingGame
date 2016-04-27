@@ -104,6 +104,25 @@ public class Model {
         ++this.numberOfAttempts;
     }
 
+
+    /**
+     * Utility method to test comparing the number of player and computer
+     *
+     * @param playerGuess value from player input
+     */
+    public int compareGuessAndRandomNumber(int playerGuess) {
+
+        if (playerGuess < randomNumber) {
+            lowerBound = playerGuess;
+            return -1;
+        } else if (playerGuess > randomNumber) {
+            upperBound = playerGuess;
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     @Override
     public String toString() {
         return "Model{" +

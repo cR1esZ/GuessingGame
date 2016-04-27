@@ -47,7 +47,7 @@ public class Controller {
         while (playerGuessNumber != model.getRandomNumber()) {
             playerGuessNumber = inputIntValueWithScanner(scanner);
             model.addOneAttempt();
-            compareGuessAndRandomNumber(playerGuessNumber);
+            printCompareResult(playerGuessNumber);
         }
 
     }
@@ -113,18 +113,17 @@ public class Controller {
      *
      * @param playerGuess value from player input
      */
-    public void compareGuessAndRandomNumber(int playerGuess) {
+    public void printCompareResult(int playerGuess) {
 
-        if (playerGuess < model.getRandomNumber()) {
+        if (model.compareGuessAndRandomNumber(playerGuess) < 0) {
             view.printMessage(view.GUESS_NUMBER_LOW);
-            model.setLowerBound(playerGuess);
 
-        } else if (playerGuess > model.getRandomNumber()) {
+        } else if (model.compareGuessAndRandomNumber(playerGuess) > 0) {
             view.printMessage(view.GUESS_NUMBER_HIGH);
-            model.setUpperBound(playerGuess);
 
         } else {
             view.printMessageAndInt(view.RIGHT_GUESS, model.getNumberOfAttempts());
+
         }
     }
 
@@ -137,7 +136,7 @@ public class Controller {
         int min = scanner.nextInt();
         int max = scanner.nextInt();
 
-        if (!compareLowerBoundAndUpperBound(min,max)) {
+        if (compareLowerBoundAndUpperBound(min,max)) {
             view.printMessage(view.COMPARE_MIN_AND_MAX);
             return createGameWithRange(scanner);
         }
