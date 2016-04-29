@@ -28,7 +28,7 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
 
         defaultGame();
-        System.out.println(model.getRandomNumber());
+
         startGameLogic(scanner);
 
         menuForChoiceGame(scanner);
