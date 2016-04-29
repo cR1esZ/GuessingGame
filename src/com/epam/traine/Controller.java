@@ -40,7 +40,6 @@ public class Controller {
     /**
      * This method start the game
      *
-//     * @param model   which of the game
      * @param scanner input stream
      */
     public void startGameLogic(Scanner scanner) {
