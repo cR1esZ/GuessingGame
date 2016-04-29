@@ -1,8 +1,5 @@
 package com.epam.traine;
 
-
-
-
 /**
  * @author andreyholovan
  * @version 1.0
@@ -10,27 +7,10 @@ package com.epam.traine;
 
 public class Model {
 
-    private static final int RAND_MAX = Integer.MAX_VALUE;
-    private static final int RAND_MIN = 0;
-    private static final int ATTEMPTS_ZERO = 0;
-    private static final int DEFAULT_UPPER_BOUND = 100;
-
     private int randomNumber;
     private int lowerBound;
     private int upperBound;
     private int numberOfAttempts;
-
-    /**
-     * Constructor with defaults data
-     *
-     * @see Model#Model()
-     */
-    public Model() {
-        this.randomNumber = rand(RAND_MIN, DEFAULT_UPPER_BOUND);
-        this.lowerBound = RAND_MIN;
-        this.upperBound = DEFAULT_UPPER_BOUND;
-        this.numberOfAttempts = ATTEMPTS_ZERO;
-    }
 
     /**
      * This method return random int value in a range of (0...Integer.MAX_VALUE)
@@ -38,7 +18,7 @@ public class Model {
      * @return random value
      */
     public int rand() {
-        return rand(RAND_MIN, RAND_MAX);
+        return rand(IGrobalConstants.RAND_MIN, IGrobalConstants.RAND_MAX);
     }
 
     /**
@@ -84,18 +64,6 @@ public class Model {
         this.numberOfAttempts = numberOfAttempts;
     }
 
-    public static int getRandMax() {
-        return RAND_MAX;
-    }
-
-
-    public static int getRandMin() {
-        return RAND_MIN;
-    }
-
-    public static int getAttemptsZero() {
-        return ATTEMPTS_ZERO;
-    }
 
     /**
      * This method add one attempt
@@ -121,6 +89,21 @@ public class Model {
         } else {
             return 0;
         }
+    }
+
+    public boolean compareLowerBoundAndUpperBound(int min,int max){
+        return min > max || min == max || min + 1 == max;
+    }
+
+
+
+    /**
+     * Utility method to check for entry into the range
+     *
+     * @param playerGuess value from player input
+     */
+    public boolean isGuessNumberOfRange(int playerGuess) {
+        return playerGuess > lowerBound && playerGuess < upperBound;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.epam.traine;
 
+
 import java.util.Scanner;
 
 /**
@@ -8,9 +9,6 @@ import java.util.Scanner;
  */
 
 public class Controller {
-
-    private static final int MENU_ITEM_ONE = 1;
-    private static final int MENU_ITEM_TWO = 2;
 
 
     private Model model;
@@ -29,18 +27,23 @@ public class Controller {
 
         Scanner scanner = new Scanner(System.in);
 
-        actionUser(model, scanner);
+        defaultGame();
+        System.out.println(model.getRandomNumber());
+        startGameLogic(scanner);
+
         menuForChoiceGame(scanner);
 
     }
 
+
+
     /**
      * This method start the game
      *
-     * @param model   which of the game
+//     * @param model   which of the game
      * @param scanner input stream
      */
-    public void actionUser(Model model, Scanner scanner) {
+    public void startGameLogic(Scanner scanner) {
 
         int playerGuessNumber = model.getLowerBound() - 1;
 
@@ -49,7 +52,6 @@ public class Controller {
             model.addOneAttempt();
             printCompareResult(playerGuessNumber);
         }
-
     }
 
     /**
@@ -59,54 +61,48 @@ public class Controller {
      */
     public void menuForChoiceGame(Scanner scanner) {
 
-        view.printMessage(view.MENU_TEXT_ONE);
-        view.printMessage(view.MENU_TEXT_TWO);
+        view.printMessage(View.MENU_TEXT_ONE);
+        view.printMessage(View.MENU_TEXT_TWO);
 
         while (!scanner.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA);
+            view.printMessage(View.WRONG_INPUT_INT_DATA);
             scanner.next();
         }
         int result = scanner.nextInt();
-        
-        if (result != MENU_ITEM_ONE && result != MENU_ITEM_TWO) {
-            view.printMessage(view.WRONG_CHOICE_MENU);
+
+        if (result != IGrobalConstants.MENU_ITEM_ONE && result != IGrobalConstants.MENU_ITEM_TWO) {
+            view.printMessage(View.WRONG_CHOICE_MENU);
             menuForChoiceGame(scanner);
         }
         switch (result) {
             case 1:
-                actionUser(createGameWithRange(scanner), scanner);
+                createGameWithRange(scanner);
+                startGameLogic(scanner);
                 break;
             case 2:
-                actionUser(createGameWithoutParameters(), scanner);
+                createGameWithoutParameters();
+                startGameLogic(scanner);
                 break;
         }
     }
 
     public int inputIntValueWithScanner(Scanner scanner) {
-        view.printMessageAndRange(view.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
+        view.printMessageAndRange(View.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
         while (!scanner.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA);
-            view.printMessageAndRange(view.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
+            view.printMessage(View.WRONG_INPUT_INT_DATA);
+            view.printMessageAndRange(View.RANGE_INFO, model.getLowerBound(), model.getUpperBound());
             scanner.next();
         }
         int playerGuess = scanner.nextInt();
 
-        if (!isGuessNumberOfRange(playerGuess)) {
-            view.printMessageAndRange(view.WRONG_INPUT_DATA_IN_RANGE, model.getLowerBound(), model.getUpperBound());
+        if (!model.isGuessNumberOfRange(playerGuess)) {
+            view.printMessageAndRange(View.WRONG_INPUT_DATA_IN_RANGE, model.getLowerBound(), model.getUpperBound());
             return inputIntValueWithScanner(scanner);
         }
 
         return playerGuess;
     }
 
-    /**
-     * Utility method to check for entry into the range
-     *
-     * @param playerGuess value from player input
-     */
-    public boolean isGuessNumberOfRange(int playerGuess) {
-        return playerGuess > model.getLowerBound() && playerGuess < model.getUpperBound();
-    }
 
     /**
      * Utility method to test comparing the number of player and computer
@@ -115,49 +111,55 @@ public class Controller {
      */
     public void printCompareResult(int playerGuess) {
 
-        if (model.compareGuessAndRandomNumber(playerGuess) < 0) {
-            view.printMessage(view.GUESS_NUMBER_LOW);
-
-        } else if (model.compareGuessAndRandomNumber(playerGuess) > 0) {
-            view.printMessage(view.GUESS_NUMBER_HIGH);
-
-        } else {
-            view.printMessageAndInt(view.RIGHT_GUESS, model.getNumberOfAttempts());
-
+        switch (model.compareGuessAndRandomNumber(playerGuess)) {
+            case IGrobalConstants.LESS:
+                view.printMessage(View.GUESS_NUMBER_LOW);
+                break;
+            case IGrobalConstants.GREATER:
+                view.printMessage(View.GUESS_NUMBER_HIGH);
+                break;
+            case IGrobalConstants.EQUAL:
+                view.printMessageAndInt(View.RIGHT_GUESS, model.getNumberOfAttempts());
+                break;
         }
     }
 
-    public Model createGameWithRange(Scanner scanner) {
-        view.printMessage(view.GAME_WITH_RANGE);
+
+    public void defaultGame(){
+        model.setRandomNumber(model.rand(IGrobalConstants.DEFAULT_RAND_MIN,IGrobalConstants.DEFAULT_RAND_MAX));
+        model.setLowerBound(IGrobalConstants.DEFAULT_RAND_MIN);
+        model.setUpperBound(IGrobalConstants.DEFAULT_RAND_MAX);
+        model.setNumberOfAttempts(IGrobalConstants.ATTEMPTS_ZERO);
+    }
+
+    public void createGameWithRange(Scanner scanner) {
+        view.printMessage(View.GAME_WITH_RANGE);
         while (!scanner.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA);
+            view.printMessage(View.WRONG_INPUT_INT_DATA);
             scanner.next();
         }
         int min = scanner.nextInt();
         int max = scanner.nextInt();
 
-        if (compareLowerBoundAndUpperBound(min,max)) {
-            view.printMessage(view.COMPARE_MIN_AND_MAX);
-            return createGameWithRange(scanner);
-        }
+        if (model.compareLowerBoundAndUpperBound(min, max)) {
+            view.printMessage(View.COMPARE_MIN_AND_MAX);
+            createGameWithRange(scanner);
+        } else {
         model.setRandomNumber(model.rand(min, max));
         model.setLowerBound(min);
         model.setUpperBound(max);
-        model.setNumberOfAttempts(model.getAttemptsZero());
-        return model;
+        model.setNumberOfAttempts(IGrobalConstants.ATTEMPTS_ZERO);
+        }
     }
 
-    public Model createGameWithoutParameters() {
+    public void createGameWithoutParameters() {
         model.setRandomNumber(model.rand());
-        model.setLowerBound(model.getRandMin());
-        model.setUpperBound(model.getRandMax());
-        model.setNumberOfAttempts(model.getAttemptsZero());
-        return model;
+        model.setLowerBound(IGrobalConstants.RAND_MIN);
+        model.setUpperBound(IGrobalConstants.RAND_MAX);
+        model.setNumberOfAttempts(IGrobalConstants.ATTEMPTS_ZERO);
+
     }
-
-
-    public boolean compareLowerBoundAndUpperBound(int min,int max){
-        return min > max || min == max || min + 1 == max;
-    }
-
 }
+
+
+
